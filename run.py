@@ -35,7 +35,7 @@ class addData(Resource):
 	key = "unitkey"
 	message = str(args['station_id'])+str(args['temperature'])+str(args['windspeed'])+str(args['station_time'])
 	hash_digest = hmac.HMAC(key, message, sha256).hexdigest()
-	if hmac.compare_digest(hash_digest, args['hmac_digest']):
+	if (hash_digest ==  args['hmac_digest']):
 		insertIntoDatabase(args)
 	
 
